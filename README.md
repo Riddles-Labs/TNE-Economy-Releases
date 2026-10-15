@@ -6,6 +6,22 @@ TNE-Economy 1.0.11 and newer download verified updates directly from this reposi
 
 Each release includes the jar, a SHA-256 checksum and tne-economy-latest.json used by the updater.
 
+## Category menus and transaction audits (1.0.52)
+
+Adds six-row Bank, Wallet and Admin menus with category cards, detail views,
+breadcrumbs, Back/Refresh controls and pagination. Admin > Transactions opens the
+global ledger, account audits and receipt lookup. Players can filter their history
+and inspect their own receipts; administrators can inspect the complete audit
+context. Financial actions have a confirmation screen.
+
+This is an operator production-testing beta; manual live gameplay qualification
+remains incomplete. The server JAR is built and tested by a persistent VM runner,
+then independently rebuilt and compared before offline signing and publication.
+The GUI overhaul first appears in **1.0.52**; 1.0.51 retains the earlier menus.
+Wait for UPDATE READY, then restart Minecraft, or stop the server and replace the
+old JAR manually. Keep only one TNE JAR and preserve the plugin data folder.
+No TNECORE update or re-pairing is required for these menus.
+
 ## Detailed server-owner controls (1.0.23)
 
 Restores local issuance, treasury and reward funding, Vault settlement and conversion reserves, account labels, currency rules/conversion settings, receipts, payment cancellation, money-note refunds, command/owner audit and console-approved currency resets. Pre-funded supply blocks new issuance while allowing funded payouts. Existing balances and pairing remain intact; no currency is issued automatically.
