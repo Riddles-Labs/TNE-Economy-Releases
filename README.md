@@ -6,6 +6,19 @@ TNE-Economy 1.0.11 and newer download verified updates directly from this reposi
 
 Each release includes the jar, a SHA-256 checksum and tne-economy-latest.json used by the updater.
 
+## Player-head leaderboards (1.0.53)
+
+Use `/tnetop <currency>` for currency balances, `/tnetop all` for an equal-weight
+average percentile rank, and `/tnetop gui` for the player-head menu. Wallet and
+Bank also have Leaderboards categories. Rankings are paged, use each currency's
+precision, exclude system accounts, and respect currency permissions.
+
+The overall value is a 0–100 rank score, not combined money: each visible currency
+counts equally, tied balances share midpoint percentiles, and missing balances
+count as zero. A tied or single-player currency contributes a neutral 50.
+Existing `/tnetop 25 compact` syntax remains available. Install the signed 1.0.53
+server JAR and restart Minecraft; no TNECORE update or re-pairing is required.
+
 ## Category menus and transaction audits (1.0.52)
 
 Adds six-row Bank, Wallet and Admin menus with category cards, detail views,
