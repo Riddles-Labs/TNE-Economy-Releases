@@ -6,6 +6,15 @@ TNE-Economy 1.0.11 and newer download verified updates directly from this reposi
 
 Each release includes the jar, a SHA-256 checksum and tne-economy-latest.json used by the updater.
 
+## Restored startup banner (1.0.55)
+
+Restores the organized boxed TNE startup console report, with version, developer
+`cmriddles`, platform/Java, node/server identity, setup mode, integration states,
+economy/SQL/TNECORE connections, pairing, heartbeat, outbox and Redis. Original
+section borders, aligned columns and status/setup guidance are preserved with
+MiniMessage colors. Install 1.0.55 and restart normally; no additional core update
+or re-pairing is needed. Other detailed reports and the Folia menu fix are retained.
+
 ## MiniMessage reports and Folia menu fix (1.0.54)
 
 TNE-owned Paper/Folia console logs and in-game messages now share MiniMessage
