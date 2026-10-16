@@ -6,6 +6,28 @@ TNE-Economy 1.0.11 and newer download verified updates directly from this reposi
 
 Each release includes the jar, a SHA-256 checksum and tne-economy-latest.json used by the updater.
 
+## Compact menus and readable accounts (1.0.58)
+
+Wallet bags keep their icon and TNE details without Minecraft’s misleading Empty
+contents preview. Their status follows the wallet screen. All menu item names and
+hover text wrap at 32 visible characters, preserving full values and MiniMessage
+colors instead of cutting them off.
+
+Ledger, history, receipts and account menus show player names and existing account
+labels for the exact currency and scope. Known system accounts show their role;
+unknown identities retain a UUID fallback. Admin receipt entries retain account IDs
+and chat receipt names can copy the original UUID. Transaction IDs and stored
+ledger data stay intact.
+
+The gold-bar Balances card in `/bank` and `/tnemybank` previews configured server
+currencies, with an overflow count and a complete paged list (21 per page). Each
+currency uses its own precision; Back, Refresh and pagination stay within Bank.
+See [in-game menus](IN_GAME_MENUS.md).
+
+Install 1.0.58 while Minecraft is stopped and restart normally. No core update or
+database migration is required. Automated checks do not certify live client
+rendering or gameplay qualification; this remains a production-testing beta.
+
 ## Folia leaderboard completion crash fix (1.0.57)
 
 Fixes leaderboard autocomplete reading `args[0]` when Paper/Folia supplies an empty
