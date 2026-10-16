@@ -6,6 +6,17 @@ TNE-Economy 1.0.11 and newer download verified updates directly from this reposi
 
 Each release includes the jar, a SHA-256 checksum and tne-economy-latest.json used by the updater.
 
+## Sunflower currency icons (1.0.59)
+
+Currency and balance cards now use sunflowers across Wallet, Bank, admin currencies
+and leaderboard selection. If SUNFLOWER is missing or is not a usable item on the
+running API, icons fall back to GOLD_NUGGET, then GOLD_INGOT, then PAPER. The
+plugin’s declared Java/API requirements still apply.
+
+Install 1.0.59 while Minecraft is stopped and restart normally. No core update or
+database migration is required. Compact hover text and readable account names
+remain included. See [in-game menus](IN_GAME_MENUS.md).
+
 ## Compact menus and readable accounts (1.0.58)
 
 Wallet bags keep their icon and TNE details without Minecraft’s misleading Empty

@@ -13,7 +13,7 @@ footer, beside Refresh and Close. Lists use Previous/Next at the outer corners.
 
 | Entry | Categories | Detail screens |
 | --- | --- | --- |
-| `/bank` or `/tnemybank` | Account Overview, Payment Requests, Transactions, Wallet | All-currency gold-bar balance preview and paged balances; account identity/scope/version; Received Requests and Sent Requests; filtered history |
+| `/bank` or `/tnemybank` | Account Overview, Payment Requests, Transactions, Wallet | All-currency sunflower balance preview and paged balances; account identity/scope/version; Received Requests and Sent Requests; filtered history |
 | `/wallet` | Balances, Transactions, Exchange, Wallet Details, Leaderboards | Paged currency balances; filtered history; conversion rates; account and scope information |
 | `/tneadminmenu` | Transactions, Accounts, Currencies | Global ledger and account audits; account management; currency type and precision |
 | Admin > Transactions | All Transactions, Account Audits, Find Receipt | Paged cross-account ledger; account selector and incoming/outgoing filters; exact ID lookup |
@@ -106,6 +106,13 @@ and scope; known system accounts show their role. Historical names are a fallbac
 when the server has no current name. Unknown accounts keep their UUID. Admin
 receipt entries retain an Account ID detail, while transaction IDs remain visible.
 
-The bank gold bar previews up to seven configured currencies plus an overflow
+The bank balance card previews up to seven configured currencies plus an overflow
 count. Click it for the complete balance list, 21 currencies per page. Each uses
 its own decimal precision; Refresh retains the page and Back returns to Bank.
+
+## Currency icons (1.0.59)
+
+Currency and balance cards use SUNFLOWER in Wallet, Bank, the admin currency
+catalog and leaderboard selection. If the running API lacks a usable sunflower
+item, the cosmetic icon falls back to GOLD_NUGGET, then GOLD_INGOT, then PAPER.
+The plugin’s Java/API requirements still apply.
