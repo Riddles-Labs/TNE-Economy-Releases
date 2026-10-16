@@ -6,6 +6,25 @@ TNE-Economy 1.0.11 and newer download verified updates directly from this reposi
 
 Each release includes the jar, a SHA-256 checksum and tne-economy-latest.json used by the updater.
 
+## MiniMessage reports and Folia menu fix (1.0.54)
+
+TNE-owned Paper/Folia console logs and in-game messages now share MiniMessage
+formatting, readable fields, error references and clearer startup/service reports.
+Connection warnings distinguish timeouts and rejected requests, limit repeated
+warnings and report recovery details. A timeout does not claim that the core updated.
+TNECORE 1.0.45 supplies actual version/process metadata for confirmed core version
+changes and possible restart/backend-switch notices. Older cores remain compatible.
+
+`logging.colors: true` controls console colors. `updates.notify: true` checks signed
+releases and alerts administrators without downloading a JAR. `updates.enabled`
+remains the separate opt-in for verified downloads and installation on normal restart.
+Templates live under `messages.reports` in messages.yml; existing custom values remain.
+
+Fixes the CHAIN icon crash on Folia 26.2 by resolving IRON_CHAIN/CHAIN across versions.
+Unavailable cosmetic icons fall back safely instead of preventing the menu opening.
+Install plugin 1.0.54 while Minecraft is stopped, then restart. Core 1.0.45 only needs
+to be installed/restarted for the new core identity reports; no re-pairing is required.
+
 ## Player-head leaderboards (1.0.53)
 
 Use `/tnetop <currency>` for currency balances, `/tnetop all` for an equal-weight
