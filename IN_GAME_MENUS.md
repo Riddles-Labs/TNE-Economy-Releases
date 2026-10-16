@@ -13,7 +13,7 @@ footer, beside Refresh and Close. Lists use Previous/Next at the outer corners.
 
 | Entry | Categories | Detail screens |
 | --- | --- | --- |
-| `/bank` or `/tnemybank` | Account Overview, Payment Requests, Transactions, Wallet | All-currency sunflower balance preview and paged balances; account identity/scope/version; Received Requests and Sent Requests; filtered history |
+| `/bank` or `/tnemybank` | Account Overview, Payment Requests, Transactions, Leaderboards | Separate currency flowers across the top row and paged balances; account identity/scope/version; Received Requests and Sent Requests; filtered history |
 | `/wallet` | Balances, Transactions, Exchange, Wallet Details, Leaderboards | Paged currency balances; filtered history; conversion rates; account and scope information |
 | `/tneadminmenu` | Transactions, Accounts, Currencies | Global ledger and account audits; account management; currency type and precision |
 | Admin > Transactions | All Transactions, Account Audits, Find Receipt | Paged cross-account ledger; account selector and incoming/outgoing filters; exact ID lookup |
@@ -96,9 +96,9 @@ and check shift-click/drag cancellation and refresh/back behavior.
 
 ## Compact tooltips and readable accounts (1.0.58)
 
-Every inventory item name and lore line wraps at 32 visible characters. Long IDs
-continue onto the next line without losing characters. Colors and events survive
-wrapping. Wallet bag icons omit vanilla bundle contents so Minecraft does not add
+Inventory item names and lore target 32 visible characters, wrapping at spaces.
+Words and unbroken values stay whole, even when a name or ID needs a wider line.
+Colors and events survive wrapping. Wallet bag icons omit vanilla bundle contents so Minecraft does not add
 an Empty preview. Wallet shortcut status follows the current menu.
 
 Account fields show player names and saved account labels for the exact currency
@@ -106,9 +106,10 @@ and scope; known system accounts show their role. Historical names are a fallbac
 when the server has no current name. Unknown accounts keep their UUID. Admin
 receipt entries retain an Account ID detail, while transaction IDs remain visible.
 
-The bank balance card previews up to seven configured currencies plus an overflow
-count. Click it for the complete balance list, 21 currencies per page. Each uses
-its own decimal precision; Refresh retains the page and Back returns to Bank.
+The bank top row shows up to seven separate currency flowers from left to right.
+Each has its own name, balance and decimal precision. Previous/Next browse remaining
+currencies and Refresh retains the row page. The All Balances footer opens the
+complete balance list, 21 currencies per page; Back returns to Bank.
 
 ## Currency icons (1.0.59)
 
@@ -116,3 +117,18 @@ Currency and balance cards use SUNFLOWER in Wallet, Bank, the admin currency
 catalog and leaderboard selection. If the running API lacks a usable sunflower
 item, the cosmetic icon falls back to GOLD_NUGGET, then GOLD_INGOT, then PAPER.
 The plugin’s Java/API requirements still apply.
+
+## Bank currency row (1.0.60)
+
+Each configured server currency has its own sunflower, occupying slots 10 through
+16 from left to right. Seven fit on a page; Previous/Next browse the rest. Hover
+shows only that currency’s balance, scope and ledger version. Refresh keeps the
+current row page. Account Overview keeps account identity details below the flowers.
+All Balances opens the complete list, and a currency flower opens the list page
+containing that currency.
+
+Hover text uses word boundaries throughout descriptions and transaction context;
+there is no fixed-character slicing. My Bank keeps one Wallet link in the footer.
+Leaderboard Player ID details require tne.admin.account.inspect; regular players
+see usernames, ranks and balances. Unknown names show Unknown player while heads
+retain their actual owner UUID internally.

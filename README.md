@@ -6,6 +6,22 @@ TNE-Economy 1.0.11 and newer download verified updates directly from this reposi
 
 Each release includes the jar, a SHA-256 checksum and tne-economy-latest.json used by the updater.
 
+## Separate bank currency flowers (1.0.60)
+
+`/bank` and `/tnemybank` now show each server currency as its own sunflower across
+the top row, from left to right. Each flower shows that currency’s name and balance
+with its own precision. Seven fit on a row page; Previous/Next browse the rest and
+Refresh keeps the current page. All Balances opens the full currency list.
+
+Hover text now wraps between words and keeps long names and IDs whole. My Bank
+keeps one Wallet shortcut in the footer. Leaderboard Player ID details require
+`tne.admin.account.inspect`; regular players see names, ranks and balances.
+
+Account Overview keeps account identity, scope and ledger version below the flowers.
+The existing material fallbacks and compact hover formatting remain included.
+Install 1.0.60 while Minecraft is stopped and restart normally. No core update or
+migration is required. See [in-game menus](IN_GAME_MENUS.md).
+
 ## Sunflower currency icons (1.0.59)
 
 Currency and balance cards now use sunflowers across Wallet, Bank, admin currencies

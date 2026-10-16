@@ -81,3 +81,7 @@ Automated checks cover H2 and the configured disposable MySQL/MariaDB fixtures,
 permissions, exclusions, ties, missing balances, currency precision, stable page
 boundaries, command compatibility, head UUIDs and parent navigation. Live
 Paper/Folia visual/gameplay qualification remains an operator beta check.
+
+Leaderboard cards show usernames, rank and balances to regular players. Player ID
+details require tne.admin.account.inspect and are checked when the GUI renders.
+Unknown names use Unknown player rather than exposing UUID fallback text.
