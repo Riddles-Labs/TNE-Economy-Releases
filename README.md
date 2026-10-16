@@ -6,6 +6,19 @@ TNE-Economy 1.0.11 and newer download verified updates directly from this reposi
 
 Each release includes the jar, a SHA-256 checksum and tne-economy-latest.json used by the updater.
 
+## Folia leaderboard completion crash fix (1.0.57)
+
+Fixes leaderboard autocomplete reading `args[0]` when Paper/Folia supplies an empty
+argument list. This exception could escape into a region tick. Root completions
+now handle both zero arguments and an empty first argument correctly, retaining
+permission filtering and currency capitalization. Versions 1.0.55 and 1.0.56 both
+contain the reported bug; install 1.0.57 while Minecraft is stopped, then restart.
+
+The shared adapter also contains unexpected runtime exceptions from TNE's bound
+completers, returns no suggestions on failure and throttles repeated warnings.
+The release retains the currency display and startup-banner fixes. No core update,
+balance reset, re-pairing or database migration is required.
+
 ## Consistent currency capitalization (1.0.56)
 
 Currency names use initial capitals regardless of input case: `coins`, `COINS`
