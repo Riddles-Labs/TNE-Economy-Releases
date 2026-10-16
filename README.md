@@ -19,6 +19,7 @@ changes and possible restart/backend-switch notices. Older cores remain compatib
 releases and alerts administrators without downloading a JAR. `updates.enabled`
 remains the separate opt-in for verified downloads and installation on normal restart.
 Templates live under `messages.reports` in messages.yml; existing custom values remain.
+See [report formatting and configuration](REPORTING.md).
 
 Fixes the CHAIN icon crash on Folia 26.2 by resolving IRON_CHAIN/CHAIN across versions.
 Unavailable cosmetic icons fall back safely instead of preventing the menu opening.
