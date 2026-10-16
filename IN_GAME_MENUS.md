@@ -8,13 +8,12 @@ part of these menus. Existing command aliases from `config.yml` still apply.
 
 Root menus show category cards. Lists, filters, and financial actions live inside
 their own sections. The star at the top shows the current path; Back returns to
-the parent section. Bank, Wallet, and authorized Admin shortcuts remain in the
+the parent section. Wallet and authorized Admin shortcuts remain in the
 footer, beside Refresh and Close. Lists use Previous/Next at the outer corners.
 
 | Entry | Categories | Detail screens |
 | --- | --- | --- |
-| `/bank` or `/tnemybank` | Account Overview, Payment Requests, Transactions, Leaderboards | Separate currency flowers across the top row and paged balances; account identity/scope/version; Received Requests and Sent Requests; filtered history |
-| `/wallet` | Balances, Transactions, Exchange, Wallet Details, Leaderboards | Paged currency balances; filtered history; conversion rates; account and scope information |
+| `/wallet`, `/bank` or `/tnemybank` | Account Overview, Payment Requests, Leaderboards, Transactions, Exchange | One unified Wallet; currency flowers and paged balances; account details; requests; filtered history and receipts; conversions |
 | `/tneadminmenu` | Transactions, Accounts, Currencies | Global ledger and account audits; account management; currency type and precision |
 | Admin > Transactions | All Transactions, Account Audits, Find Receipt | Paged cross-account ledger; account selector and incoming/outgoing filters; exact ID lookup |
 | Receipt | Ledger Entries, Transaction Context (Audit Context for admins) | Every debit/credit and scope; public or full operator metadata |
@@ -81,7 +80,7 @@ refresh returns the current page's latest committed data.
 
 ## Player-head leaderboards (1.0.53)
 
-Wallet and Bank include **Leaderboards** with per-currency rankings and an
+The unified Wallet includes **Leaderboards** with per-currency rankings and an
 **Overall Average Rank** category. `/tnetop gui` opens the same menu. Pages show
 21 named player heads, balances or rank scores, and retain their parent menu.
 See [commands, permissions and scoring rules](LEADERBOARDS.md).
@@ -109,7 +108,7 @@ receipt entries retain an Account ID detail, while transaction IDs remain visibl
 The bank top row shows up to seven separate currency flowers from left to right.
 Each has its own name, balance and decimal precision. Previous/Next browse remaining
 currencies and Refresh retains the row page. The All Balances footer opens the
-complete balance list, 21 currencies per page; Back returns to Bank.
+complete balance list, 21 currencies per page; Back returns to Wallet.
 
 ## Currency icons (1.0.59)
 
@@ -132,3 +131,22 @@ there is no fixed-character slicing. My Bank keeps one Wallet link in the footer
 Leaderboard Player ID details require tne.admin.account.inspect; regular players
 see usernames, ranks and balances. Unknown names show Unknown player while heads
 retain their actual owner UUID internally.
+
+## Centered My Bank options (1.0.61)
+
+The chest, paper, player head and book share one centered row below the currency
+flowers: Account Overview, Payment Requests, Leaderboards, and Transactions.
+The pairs sit evenly around the middle column; Leaderboards is one row higher.
+The Wallet shortcut remains in the footer.
+
+## Unified Wallet and Bank (1.0.61)
+
+All player menu commands open the same Wallet screen. The four main options form
+a centered row, with Exchange centered beneath them. Account Overview consolidates
+the former Wallet Details and Bank Account views. Balances and player receipts use
+Wallet breadcrumbs and return to this home screen. There is one Wallet footer link.
+
+The existing tne.menu.wallet, tne.menu.bank and tne.menu.mybank nodes are alternative
+grants for this shared menu. Deny all three to deny entry. Transaction, exchange,
+conversion, leaderboard and admin permissions still apply independently.
+/wallet history and /bank history share history; optional /wallet web linking stays.

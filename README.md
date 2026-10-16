@@ -6,6 +6,22 @@ TNE-Economy 1.0.11 and newer download verified updates directly from this reposi
 
 Each release includes the jar, a SHA-256 checksum and tne-economy-latest.json used by the updater.
 
+## Unified Wallet and Bank (1.0.61)
+
+`/wallet`, `/bank`, `/tnemybank` and configured bank aliases open the same Wallet
+menu. Currency flowers remain at the top. Account Overview, Payment Requests,
+Leaderboards and Transactions share a centered row, with Exchange centered below.
+One Wallet footer shortcut replaces the separate Bank and Wallet links. Details,
+balances, requests, history and exchange return to the same player menu.
+
+The existing `tne.menu.wallet`, `tne.menu.bank` and `tne.menu.mybank` nodes are
+alternative entry grants. Deny all three to deny shared-menu entry. Financial,
+transaction, exchange, leaderboard and admin permissions still apply separately.
+`/wallet history` and `/bank history` share history; `/wallet web` linking remains.
+
+Install 1.0.61 while Minecraft is stopped and restart normally. No core update or
+migration is required. See [in-game menus](IN_GAME_MENUS.md).
+
 ## Separate bank currency flowers (1.0.60)
 
 `/bank` and `/tnemybank` now show each server currency as its own sunflower across
