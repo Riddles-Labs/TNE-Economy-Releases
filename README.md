@@ -6,6 +6,19 @@ TNE-Economy 1.0.11 and newer download verified updates directly from this reposi
 
 Each release includes the jar, a SHA-256 checksum and tne-economy-latest.json used by the updater.
 
+## Consistent currency capitalization (1.0.56)
+
+Currency names use initial capitals regardless of input case: `coins`, `COINS`
+and `cOiNs` show as `Coins`; `TNE` remains uppercase. Balances/payments, Wallet/Bank
+and exchange menus, leaderboards, receipts/history, money notes, notifications,
+Vault names and display placeholders share the formatting. MiniMessage colors,
+gradients, numeric precision and click actions are retained.
+
+Currency IDs, permissions, database keys, menu payloads and note metadata are
+unchanged. `%tne_currency_name%` supplies the default display name;
+`%tne_currency%` remains the raw ID. The boxed startup banner is retained.
+Install 1.0.56 and restart normally. No additional core update or migration is needed.
+
 ## Restored startup banner (1.0.55)
 
 Restores the organized boxed TNE startup console report, with version, developer
