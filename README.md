@@ -6,6 +6,25 @@ TNE-Economy 1.0.11 and newer download verified updates directly from this reposi
 
 Each release includes the jar, a SHA-256 checksum and tne-economy-latest.json used by the updater.
 
+## Plugin developer API (1.0.62)
+
+Use TNE from another Paper/Folia plugin through `TneApi` and
+`api.client(getName())`. Read balances, discover currencies, transfer money,
+credit/debit players using the funded payout pool, and recover transaction
+receipts by your saved operation key. Operations are asynchronous, audited and
+use TNE's existing ledger.
+
+Start with the [developer guide](API.md) or [complete example](plugin-api-example/README.md).
+The [1.0.62 release](https://github.com/SlyRiddles/TNE-Economy-Releases/releases/tag/v1.0.62)
+includes these developer downloads:
+
+- [API JAR](https://github.com/SlyRiddles/TNE-Economy-Releases/releases/download/v1.0.62/TNE-API-1.0.62.jar)
+- [Complete SDK: API, sources, Javadoc and example](https://github.com/SlyRiddles/TNE-Economy-Releases/releases/download/v1.0.62/TNE-Developer-SDK-1.0.62.zip)
+
+Developers use the API as a provided/compileOnly dependency. Server owners install
+**TNE-Economy-1.0.62.jar** in `plugins`, then restart normally. No TNECORE update
+or database migration is required. The API JAR is a development dependency.
+
 ## Unified Wallet and Bank (1.0.61)
 
 `/wallet`, `/bank`, `/tnemybank` and configured bank aliases open the same Wallet

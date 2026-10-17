@@ -1,0 +1,14 @@
+name: TneApiExample
+version: 1.0.0
+main: example.TneApiExample
+api-version: "26.1"
+folia-supported: true
+depend: [TheNewerEconomy]
+commands:
+  tneexamplebalance:
+    description: Read your TNE balance through the native API.
+    usage: /tneexamplebalance [currency]
+    permission: tneexample.balance
+permissions:
+  tneexample.balance:
+    default: true
