@@ -11,9 +11,24 @@ The entry point is `TneApi`. Get it from Bukkit's `ServicesManager`, then create
 one client using your plugin's name. Balance and money operations are
 asynchronous and return a typed result.
 
-Requires **TNE 1.0.63 or later and Java 25**. This guide covers the native
+Requires **TNE 1.0.64 or later and Java 25**. This guide covers the native
 Paper/Folia API. For the separate backend HTTP API, see
 [TNECORE API documentation](https://github.com/SlyRiddles/TNECORE/blob/main/docs/API.md).
+
+Choose the service that matches the work your plugin needs:
+
+| Need | API / guide |
+| --- | --- |
+| Named accounts, balances, payments, atomic batches | Start with the quick start below. |
+| Invoices, conversion quotes, physical notes, filtered reads, native GUIs | [Commerce, queries, and presentation](API_COMMERCE.md). |
+| Reserve funds, manage workflows, or schedule payments | [Durable workflows](API_WORKFLOWS.md). |
+| Account state, delegated budgets, refunds, and disputes | [Account access and refunds](API_ACCESS.md). |
+| Custom providers, policy checks, events, and integration testing | [Extensions and events](API_EXTENSIONS.md). |
+
+An installed provider can advertise features through
+`api.capabilities().supports("requests")` or another service name. Feature
+availability is separate from `api.isAvailable()`, which reports runtime
+readiness. TNE 1.0.64 exposes the services listed above.
 
 ## 1. Add the API dependency
 
@@ -33,7 +48,7 @@ For Maven, add TNE's public repository and API dependency to your plugin's
     <dependency>
         <groupId>com.cmriddles</groupId>
         <artifactId>the-newer-economy-api</artifactId>
-        <version>1.0.63</version>
+        <version>1.0.64</version>
         <scope>provided</scope>
     </dependency>
 </dependencies>
@@ -51,29 +66,29 @@ repositories {
 }
 
 dependencies {
-    compileOnly("com.cmriddles:the-newer-economy-api:1.0.63")
+    compileOnly("com.cmriddles:the-newer-economy-api:1.0.64")
 }
 ```
 
 Keep your normal Paper API dependency too. The TNE JAR belongs on the compile
-classpath only; install the normal `TNE-Economy-1.0.63.jar` on your server.
+classpath only; install the normal `TNE-Economy-1.0.64.jar` on your server.
 
 ### Manual API JAR alternative
 
-You can also download `TNE-API-1.0.63.jar` or the complete
-`TNE-Developer-SDK-1.0.63.zip` from
-[the 1.0.63 release](https://github.com/SlyRiddles/TNE-Economy-Releases/releases/tag/v1.0.63).
+You can also download `TNE-API-1.0.64.jar` or the complete
+`TNE-Developer-SDK-1.0.64.zip` from
+[the 1.0.64 release](https://github.com/SlyRiddles/TNE-Economy-Releases/releases/tag/v1.0.64).
 The SDK includes sources, Javadoc, and a complete example plugin.
 
 If you prefer a local API dependency, install the downloaded JAR into your local
 Maven repository, then use the same `provided` dependency shown above:
 
 ```shell
-mvn install:install-file -Dfile=TNE-API-1.0.63.jar -DgroupId=com.cmriddles -DartifactId=the-newer-economy-api -Dversion=1.0.63 -Dpackaging=jar -DgeneratePom=true
+mvn install:install-file -Dfile=TNE-API-1.0.64.jar -DgroupId=com.cmriddles -DartifactId=the-newer-economy-api -Dversion=1.0.64 -Dpackaging=jar -DgeneratePom=true
 ```
 
 For Gradle's local-file alternative, copy it to `libs` and replace the coordinate
-dependency with `compileOnly(files("libs/TNE-API-1.0.63.jar"))`. Your CI must also
+dependency with `compileOnly(files("libs/TNE-API-1.0.64.jar"))`. Your CI must also
 receive that file or perform the same local installation step.
 
 ## 2. Declare TNE as a dependency
@@ -495,8 +510,8 @@ for (var currency : api.currencies()) {
 
 Currency IDs are case-insensitive and normalize to lowercase. Display names are
 separate, with initial capitals. Do not use a display name, symbol, or formatted
-balance as an identifier. The native money API does not deliver item currencies,
-XP, or physical money notes.
+balance as an identifier. Virtual-money operations do not deliver item currencies or XP. Use
+`notes()` for signed physical money notes; see the commerce guide.
 
 The client uses `api.defaultScope()`, TNE's configured server scope. `scope()`
 shows that value. There is no scope override in this API; this is not a

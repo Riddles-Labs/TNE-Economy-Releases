@@ -165,7 +165,7 @@ final class PoolCommands {
         return AccountRef.account(UUID.fromString(uuid));
     }
 
-    private <T> void complete(CommandSender sender, CompletionStage<Result<T>> stage, Function<T, String> display) {
+    <T> void complete(CommandSender sender, CompletionStage<Result<T>> stage, Function<T, String> display) {
         stage.whenComplete((result, error) -> {
             if (error != null) {
                 plugin.getLogger().log(Level.WARNING, "TNE example operation failed; reconcile writes using their saved key", error);
@@ -183,7 +183,7 @@ final class PoolCommands {
         });
     }
 
-    private void reply(CommandSender sender, String message) {
+    void reply(CommandSender sender, String message) {
         if (!plugin.isEnabled()) return;
         try {
             if (sender instanceof Player player) {

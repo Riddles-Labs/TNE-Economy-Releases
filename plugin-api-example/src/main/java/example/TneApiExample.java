@@ -15,7 +15,9 @@ public final class TneApiExample extends JavaPlugin {
     public void onEnable() {
         Objects.requireNonNull(getCommand("tneexamplebalance"))
                 .setExecutor(this::balance);
-        new PoolCommands(this).register();
+        PoolCommands commands = new PoolCommands(this);
+        commands.register();
+        new CommerceCommands(this, commands).register();
         // TNE initializes storage asynchronously. Check readiness per request.
     }
 

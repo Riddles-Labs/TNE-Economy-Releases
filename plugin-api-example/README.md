@@ -5,6 +5,11 @@ authorized operator tools for named accounts, funded payments, atomic batches,
 receipts, history, and reversals. The API uses the same account and transaction
 types for any plugin; it does not depend on a particular game mode.
 
+Additional native service guides in this SDK cover invoices and explicit payer
+consent, accepted conversion quotes, physical-note delivery outcomes, filtered
+queries, native GUI opens, workflows, delegated access, refunds, and extensions.
+Start with `API.md` in the source checkout or the SDK's main `README.md`.
+
 ## Build
 
 1. Install **JDK 25** and Maven.
@@ -18,17 +23,17 @@ types for any plugin; it does not depend on a particular game mode.
    no manual API installation is required.
 
 3. Download the normal server JAR from
-   [TNE 1.0.63](https://github.com/SlyRiddles/TNE-Economy-Releases/releases/tag/v1.0.63).
+   [TNE 1.0.64](https://github.com/SlyRiddles/TNE-Economy-Releases/releases/tag/v1.0.64).
    Install `target/tne-api-example-1.0.0.jar` alongside
-   `TNE-Economy-1.0.63.jar` in your Paper/Folia server's `plugins` directory.
+   `TNE-Economy-1.0.64.jar` in your Paper/Folia server's `plugins` directory.
    Start the server and run `/tneexamplebalance` as a player.
 
 As an alternative to repository resolution, use the SDK's API JAR or download
-`TNE-API-1.0.63.jar` from that release. In its directory, run the following once
+`TNE-API-1.0.64.jar` from that release. In its directory, run the following once
 before building the example:
 
 ```shell
-mvn install:install-file -Dfile=TNE-API-1.0.63.jar -DgroupId=com.cmriddles -DartifactId=the-newer-economy-api -Dversion=1.0.63 -Dpackaging=jar -DgeneratePom=true
+mvn install:install-file -Dfile=TNE-API-1.0.64.jar -DgroupId=com.cmriddles -DartifactId=the-newer-economy-api -Dversion=1.0.64 -Dpackaging=jar -DgeneratePom=true
 ```
 
 ## Try a named account
@@ -110,6 +115,36 @@ Paper/Folia 26.1+ server, with Java 25. This compile coordinate is not a promise
 that TNE supports older Minecraft servers.
 
 ## Adapt it
+
+`/tneexampleapi` adds operator-only examples (`tneexample.api`, default `op`):
+
+| Action | Arguments after `/tneexampleapi` |
+| --- | --- |
+| Create an invoice | `invoice <account-uuid> <payer-uuid> <currency> <amount> <saved-key> [message]` |
+| View or explicitly decide your own invoices | `requests`, `accept <request-uuid> <saved-key>`, `deny <request-uuid>` |
+| Cancel this integration's request | `cancel-invoice <request-uuid>` |
+| Review an exchange offer, then confirm it | `quote <source> <target> <amount>`, `convert <quote-uuid> <saved-key>` |
+| Issue, redeem the held item, or inspect a note | `note <currency> <amount> <saved-key>`, `redeem <saved-key>`, `inspect-note <note-uuid>` |
+| Query multiple accounts | `batch <currency> <account-uuid> [more accounts]` |
+| Filter recent history by exact metadata | `filter <account-uuid> <currency> <metadata-key> <value> [offset]` |
+| Read a leaderboard | `top <currency|all>` |
+| Format exact money | `format <currency> <amount> <AMOUNT|NAME|SYMBOL>` |
+| Open a real permission-checked TNE menu | `menu <WALLET|EXCHANGE|LEADERBOARD|TRANSACTIONS>` |
+
+Invoice acceptance, exchange confirmation, note actions, and menu opens use the
+actual player running the command. They cannot substitute a caller-supplied
+player UUID. These tools are examples for operators; your own plugin must obtain
+the appropriate player consent before submitting an action.
+
+Check note `delivery()` before treating an issued item as delivered. Stop
+automatic retries on `REVIEW_REQUIRED`. See `API_COMMERCE.md` for financial and
+inventory outcomes, quote expiry, and bounded query rules.
+
+`mvn test` runs `PaymentRecoveryTest` using `EconomySandbox`, without a Minecraft
+server. It demonstrates a lost payment response, receipt recovery after a
+simulated restart, and duplicate-key protection. The fixture covers core virtual
+money; it does not emulate SQL, physical inventory, exchange quotes, or every
+advanced provider capability. Real server integration still needs those checks.
 
 Change the package, main class, plugin name, and command to suit your plugin.
 Keep TNE as a `provided` dependency; do not shade its API into your JAR. The

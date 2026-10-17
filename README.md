@@ -6,6 +6,40 @@ TNE-Economy 1.0.11 and newer download verified updates directly from this reposi
 
 Each release includes the jar, a SHA-256 checksum and tne-economy-latest.json used by the updater.
 
+## Advanced developer API (1.0.64)
+
+Both advanced API phases are available in one release. Use the same `TneApi`
+client for persistent financial workflows and extension services:
+
+- Protected escrow reservations, delivery acknowledgements, multistep workflows,
+  quarantine/reconciliation, and durable scheduled payments.
+- Account metadata and state, delegated spending grants, fixed-period budgets,
+  partial allocation refunds, and disputes.
+- Invoices, bound conversion quotes, signed physical notes, batch/filter queries,
+  leaderboards, exact formatting, and permission-checked native menu access.
+- Durable committed events, cursor polling/subscriptions, readiness notifications,
+  bounded policy callbacks, and external provider intent/recovery.
+- An economy sandbox with restart and lost-response simulation, a disposable
+  provider contract probe, and a compiling example with a recovery test.
+
+Start with the [developer guide](API.md), then read the
+[workflow guide](API_WORKFLOWS.md), [access/refund guide](API_ACCESS.md),
+[commerce guide](API_COMMERCE.md), or [extension/test guide](API_EXTENSIONS.md).
+The [example plugin](plugin-api-example/README.md) uses only the public API.
+
+Maven/Gradle coordinate: `com.cmriddles:the-newer-economy-api:1.0.64`.
+The guide includes the public repository configuration. Use `provided` /
+`compileOnly`; do not shade or relocate TNE API classes. API, sources, Javadoc,
+SDK, server JAR and checksums are available in the
+[1.0.64 release](https://github.com/SlyRiddles/TNE-Economy-Releases/releases/tag/v1.0.64).
+
+Server owners install **TNE-Economy-1.0.64.jar** and restart normally. Automatic
+SQL migrations V022 through V025 retain existing balances and history. No
+TNECORE or website update is required. External delivery remains the integrating
+plugin's responsibility; uncertain physical delivery requires reconciliation
+and operator review. Installed plugins are trusted code. This remains a
+production-testing beta, without completed live gameplay qualification.
+
 ## General plugin developer API (1.0.63)
 
 Use TNE as your plugin's persistent economy backend. Your plugin decides what

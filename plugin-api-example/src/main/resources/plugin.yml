@@ -13,8 +13,14 @@ commands:
     description: Operator tools for named TNE accounts and funded payments.
     usage: /tneexamplepool
     permission: tneexample.pool
+  tneexampleapi:
+    description: Operator examples for invoices, quotes, notes, queries, and menus.
+    usage: /tneexampleapi
+    permission: tneexample.api
 permissions:
   tneexample.balance:
     default: true
   tneexample.pool:
+    default: op
+  tneexample.api:
     default: op
