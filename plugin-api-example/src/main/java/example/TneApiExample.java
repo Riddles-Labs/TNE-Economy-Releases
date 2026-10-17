@@ -9,12 +9,13 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-/** A read-only integration: /tneexamplebalance [currency]. */
+/** Player balance reads plus separately authorized operator account tools. */
 public final class TneApiExample extends JavaPlugin {
     @Override
     public void onEnable() {
         Objects.requireNonNull(getCommand("tneexamplebalance"))
                 .setExecutor(this::balance);
+        new PoolCommands(this).register();
         // TNE initializes storage asynchronously. Check readiness per request.
     }
 

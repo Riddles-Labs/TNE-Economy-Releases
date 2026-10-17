@@ -6,6 +6,37 @@ TNE-Economy 1.0.11 and newer download verified updates directly from this reposi
 
 Each release includes the jar, a SHA-256 checksum and tne-economy-latest.json used by the updater.
 
+## General plugin developer API (1.0.63)
+
+Use TNE as your plugin's persistent economy backend. Your plugin decides what
+accounts represent, who may use them, and when to move money. TNE handles exact
+amounts, funding checks, atomic settlement, saved identities and the audit trail.
+
+- Create or recover named accounts using your own stable integration keys.
+- Read balances and choose player, plugin or eligible system accounts as payment
+  sources and destinations. New accounts start unfunded.
+- Post up to 100 payments atomically, including multiple currencies and split or
+  bulk payments. Incoming payments in the request can fund its net debits.
+- Save business references in metadata; recover complete receipts by key or UUID,
+  page account history, and issue one funded full compensating reversal.
+
+The [developer guide](API.md) covers Maven and Gradle setup, account and payment
+examples, startup readiness, Paper/Folia threading, error handling, operation
+keys, history, reversals and trust boundaries. A [compiling example plugin](plugin-api-example/README.md)
+demonstrates the complete workflow. No TNECORE credentials or direct SQL needed.
+
+Maven coordinate: `com.cmriddles:the-newer-economy-api:1.0.63`.
+Repository: [TNE public Maven repository](https://raw.githubusercontent.com/SlyRiddles/TNE-Economy-Releases/main/maven/).
+Use `provided` / `compileOnly`; do not bundle or relocate API classes.
+Sources and Javadoc are published alongside the API for IDE use.
+
+[Version 1.0.63 downloads](https://github.com/SlyRiddles/TNE-Economy-Releases/releases/tag/v1.0.63)
+include the server JAR, standalone API, sources, Javadoc, complete SDK and checksums.
+Server owners install **TNE-Economy-1.0.63.jar**, then restart Minecraft normally.
+The plugin applies SQL migration V021 for account identities and reversal claims;
+existing balances and history are preserved. No TNECORE or website update needed.
+The native API operates on configured virtual currencies in the server's scope.
+
 ## Plugin developer API (1.0.62)
 
 Use TNE from another Paper/Folia plugin through `TneApi` and

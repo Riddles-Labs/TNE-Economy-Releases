@@ -9,6 +9,12 @@ commands:
     description: Read your TNE balance through the native API.
     usage: /tneexamplebalance [currency]
     permission: tneexample.balance
+  tneexamplepool:
+    description: Operator tools for named TNE accounts and funded payments.
+    usage: /tneexamplepool
+    permission: tneexample.pool
 permissions:
   tneexample.balance:
     default: true
+  tneexample.pool:
+    default: op

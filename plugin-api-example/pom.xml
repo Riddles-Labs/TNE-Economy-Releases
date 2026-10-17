@@ -12,6 +12,10 @@
     </properties>
     <repositories>
         <repository>
+            <id>tne-public</id>
+            <url>https://raw.githubusercontent.com/SlyRiddles/TNE-Economy-Releases/main/maven/</url>
+        </repository>
+        <repository>
             <id>papermc</id>
             <url>https://repo.papermc.io/repository/maven-public/</url>
         </repository>
@@ -20,7 +24,7 @@
         <dependency>
             <groupId>com.cmriddles</groupId>
             <artifactId>the-newer-economy-api</artifactId>
-            <version>1.0.62</version>
+            <version>1.0.63</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
