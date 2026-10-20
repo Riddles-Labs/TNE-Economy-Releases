@@ -1,10 +1,17 @@
-# TNE 1.0.73 - Vault and VaultUnlocked compatibility
+# TNE 1.0.74 - Vault and VaultUnlocked compatibility
+
+Startup reporting correction: website fields show CHECKING until observed.
+Backend health and website pairing are independent. Only a successful pairing
+response reporting false produces UNPAIRED; failed checks produce NOT CONNECTED.
+Pairing transitions are logged as they arrive and /tnehealth shows current states.
+The duplicate post-world banner is removed. HTTP remains optional background
+work; Core 0.6.1 and the 1.0.73 startup/provider contracts remain unchanged.
 
 This supersedes the 1.0.70 caller-worker restriction. Supported synchronous
 methods execute directly from ordinary caller threads. Consumers need no
 TNE-specific executor access, source change, or asynchronous rewrite to call a
-synchronous interface. These are local unpublished builds, with compilation and
-static evidence only. Actual-server validation belongs to the owner.
+synchronous interface. Release verification uses compilation and static evidence
+only. Actual-server validation belongs to the owner.
 
 TNE owns accounts, money, supply/funding, transactions, SQL, ledger, receipts,
 audit, outbox and recovery. Java 25 and RiddlesLabsCore 0.6.1 are required.

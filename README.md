@@ -1,12 +1,12 @@
 # TNE-Economy releases
 
-## Current foundation: TNE 1.0.73 / Core 0.6.1
+## Current foundation: TNE 1.0.74 / Core 0.6.1
 
 TNE now requires **RiddlesLabsCore 0.6.1** and Java 25 on Paper/Folia
 Minecraft 26.1.2+ and 26.2. Both plugin JARs are attached to the
-[1.0.73 release](https://github.com/Riddles-Labs/TNE-Economy-Releases/releases/tag/v1.0.73).
+[1.0.74 release](https://github.com/Riddles-Labs/TNE-Economy-Releases/releases/tag/v1.0.74).
 TNE's updater downloads TNE only; install Core 0.6.1 separately before restarting
-into TNE 1.0.73. Keep existing data, configuration, pairing and SQL history.
+into TNE 1.0.74. Keep existing data, configuration, pairing and SQL history.
 
 Configured, healthy Core/TNE economies initialize during STARTUP, before ordinary
 POSTWORLD Vault consumers enable. Classic Vault, VaultUnlocked classic/native
@@ -16,10 +16,13 @@ claimed for that case. See [Vault compatibility](VAULT_COMPATIBILITY.md) and
 [startup ordering](STARTUP_ORDERING_DESIGN.md) for installation, funding, synchronous
 database latency, loader rules and remaining limitations.
 
-API coordinate: `com.cmriddles:the-newer-economy-api:1.0.73` (provided/compileOnly).
+API coordinate: `com.cmriddles:the-newer-economy-api:1.0.74` (provided/compileOnly).
 Publication uses local compilation, archive inspection and signed updates with
 GitHub Actions disabled. No tests or runtime validation certify this release;
 actual-server validation remains with the owner.
+
+TNE 1.0.74 fixes misleading startup website status: pending checks show CHECKING,
+with verified pairing reported after the HTTP response. Core 0.6.1 stays unchanged.
 
 Official compiled plugin downloads for Paper and Folia. Download the latest TNE-Economy jar from [Releases](https://github.com/SlyRiddles/TNE-Economy-Releases/releases/latest).
 
