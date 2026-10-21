@@ -1,4 +1,13 @@
-# TNE 1.0.74 - Vault and VaultUnlocked compatibility
+# TNE 1.0.75 - Vault and VaultUnlocked compatibility
+
+Final startup summary: after world services start and the first backend health
+and pairing results arrive, TNE prints one fresh complete banner with current
+service statuses. Failed checks remain visible as unavailable; completion does
+not imply success. If either check is still pending after 45 seconds, TNE prints
+one pending snapshot and a completed banner when results eventually arrive.
+Repeated polls do not repeat completed banners. Optional update-notification
+retries remain separate and never gate economy readiness. Core 0.6.1 is unchanged.
+
 
 Startup reporting correction: website fields show CHECKING until observed.
 Backend health and website pairing are independent. Only a successful pairing
