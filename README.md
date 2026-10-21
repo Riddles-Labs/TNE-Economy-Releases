@@ -1,6 +1,26 @@
 # TNE-Economy releases
 
-## Current foundation: TNE 1.0.75 / Core 0.6.1
+## Current reporting release: TNE 1.0.76 / RiddlesLabsCore 0.6.1
+
+[TNE 1.0.76](https://github.com/Riddles-Labs/TNE-Economy-Releases/releases/tag/v1.0.76)
+adds registered plugin account identity and original receipt business metadata,
+including saved idempotency keys. Install backend **TNECORE 1.0.46 first** for its
+extended report validation. The independent RiddlesLabsCore plugin needs no update
+from 0.6.1 / compatible 0.6.x. Java 25, Paper/Folia 26.1.2+ and 26.2 remain the targets.
+
+The companion website displays account ownership, business snapshots, recovery
+keys and exact UTC timestamps. [Reporting and upgrade guide](OWNER_REPORTING.md).
+Ledger/journal records, migrations, balances and native API contracts are unchanged.
+Unknown ownership stays unknown; new metadata does not backfill old transactions.
+Reversal preview/scope changes remain separate work.
+
+API coordinate: `com.cmriddles:the-newer-economy-api:1.0.76` (provided/compileOnly).
+Publication uses independently compiled source, archive/signature/checksum checks
+and direct GitHub releases, with GitHub Actions disabled. Focused reporting tests
+passed separately; actual-server and deployed-site behavior remain owner-validated.
+The updater installs a verified downloaded plugin JAR on a normal Minecraft restart.
+
+## Previous foundation: TNE 1.0.75 / Core 0.6.1
 
 TNE now requires **RiddlesLabsCore 0.6.1** and Java 25 on Paper/Folia
 Minecraft 26.1.2+ and 26.2. Both plugin JARs are attached to the
