@@ -1,5 +1,12 @@
 # TNE API for plugin developers
 
+## Shared TNE Checking (1.0.97)
+
+Native `deposit` and `withdraw` now use funded **TNE Checking**, separate from Vault Checking. Obtain `api.clientForPlugin(this)` from your own plugin and have the owner approve your plugin in `integrations.native-checking.allowed-plugins`. String-named clients remain supported for dedicated accounts, but cannot spend shared TNE Checking. Use `client.checking().pay(destination, currency, amount, reason, key)` for an attributed shared-account payout. See [Native Checking integration and migration](NATIVE_CHECKING_API.md) for authorization, receipts and limitations.
+
+
+TNE 1.0.98 publishes the portable API as Java 21 bytecode. Its Minecraft plugin requires RiddlesLabsCore 0.6.21 or newer within 0.6.x. Server runtimes can require newer Java; see [Minecraft compatibility](MINECRAFT_COMPATIBILITY.md). Earlier release requirements below are historical.
+
 Use TNE as the persistent economy backend for your plugin. Your plugin decides
 what an account represents, who may use it, and when money should move. TNE saves
 accounts, enforces currency and funding rules, commits transactions atomically,
@@ -11,7 +18,7 @@ The entry point is `TneApi`. Get it from Bukkit's `ServicesManager`, then create
 one client using your plugin's name. Balance and money operations are
 asynchronous and return a typed result.
 
-Requires **TNE 1.0.64 or later and Java 25**. This guide covers the native
+Use **TNE 1.0.98 and Java 21 or the newer runtime required by your server** for the current API. This guide covers the native
 Paper/Folia API. For the separate backend HTTP API, see
 [TNECORE API documentation](https://github.com/SlyRiddles/TNECORE/blob/main/docs/API.md).
 
@@ -30,6 +37,10 @@ An installed provider can advertise features through
 availability is separate from `api.isAvailable()`, which reports runtime
 readiness. TNE 1.0.64 exposes the services listed above.
 
+## Stable system account identities (1.0.98)
+
+`SystemAccountIds` exposes stable default identities for Vault Checking, Currency Exchange Receipts and Currency Exchange Payouts. These constants identify accounts, not permissions or a balance in a particular currency. Balances remain separate by currency and scope. Custom configured role accounts can differ from these defaults; do not assume the constant identifies an owner’s override. Native plugins should use the authorized `client.checking()` service for shared TNE Checking. See [identity migration and safe integration guidance](SYSTEM_ACCOUNT_IDENTITIES.md).
+
 ## 1. Add the API dependency
 
 For Maven, add TNE's public repository and API dependency to your plugin's
@@ -40,7 +51,7 @@ For Maven, add TNE's public repository and API dependency to your plugin's
 <repositories>
     <repository>
         <id>tne-public</id>
-        <url>https://raw.githubusercontent.com/SlyRiddles/TNE-Economy-Releases/main/maven/</url>
+        <url>https://raw.githubusercontent.com/Riddles-Labs/TNE-Economy-Releases/main/maven/</url>
     </repository>
 </repositories>
 
@@ -48,7 +59,7 @@ For Maven, add TNE's public repository and API dependency to your plugin's
     <dependency>
         <groupId>com.cmriddles</groupId>
         <artifactId>the-newer-economy-api</artifactId>
-        <version>1.0.64</version>
+        <version>1.0.98</version>
         <scope>provided</scope>
     </dependency>
 </dependencies>
@@ -62,11 +73,11 @@ For Gradle, add the repository and `compileOnly` dependency to `build.gradle.kts
 
 ```kotlin
 repositories {
-    maven("https://raw.githubusercontent.com/SlyRiddles/TNE-Economy-Releases/main/maven/")
+    maven("https://raw.githubusercontent.com/Riddles-Labs/TNE-Economy-Releases/main/maven/")
 }
 
 dependencies {
-    compileOnly("com.cmriddles:the-newer-economy-api:1.0.64")
+    compileOnly("com.cmriddles:the-newer-economy-api:1.0.98")
 }
 ```
 
@@ -77,7 +88,7 @@ classpath only; install the normal `TNE-Economy-1.0.64.jar` on your server.
 
 You can also download `TNE-API-1.0.64.jar` or the complete
 `TNE-Developer-SDK-1.0.64.zip` from
-[the 1.0.64 release](https://github.com/SlyRiddles/TNE-Economy-Releases/releases/tag/v1.0.64).
+[the 1.0.64 release](https://github.com/Riddles-Labs/TNE-Economy-Releases/releases/tag/v1.0.64).
 The SDK includes sources, Javadoc, and a complete example plugin.
 
 If you prefer a local API dependency, install the downloaded JAR into your local
