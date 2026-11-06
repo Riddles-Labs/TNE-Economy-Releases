@@ -3,8 +3,8 @@
   <groupId>com.cmriddles</groupId>
   <artifactId>the-newer-economy-api</artifactId>
   <versioning>
-    <latest>1.0.99</latest>
-    <release>1.0.99</release>
+    <latest>1.0.100</latest>
+    <release>1.0.100</release>
     <versions>
       <version>1.0.63</version>
       <version>1.0.64</version>
@@ -38,6 +38,7 @@
       <version>1.0.97</version>
       <version>1.0.98</version>
       <version>1.0.99</version>
+      <version>1.0.100</version>
     </versions>
   </versioning>
 </metadata>
